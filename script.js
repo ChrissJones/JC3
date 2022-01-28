@@ -1,3 +1,27 @@
+/*EASY: Write a function that would allow you to do this:
+
+var run = exercise('running');
+
+console.log(run()); // prints "Today's exercise: running"
+
+var swim = exercise('swimming');
+
+console.log(swim()); // prints "Today's exercise: swimming"*/
+
+function action(exercise){
+    return function(){
+        return "Today's exercise:" + exercise;
+    }
+}
+var run = action('running');
+var swim = action('swimming');
+console.log(run());
+console.log(swim());
+
+
+
+
+
 /*VERY HARD: Object prototype chain and prototypal inheritance exercise.
 
 Create a Person constructor that has three properties: name, job, and age.
@@ -15,55 +39,54 @@ function Person(name, job, age) { }
 function Programmer(name, job, age, languages) { }*/
 
 class Person {
-    constructor(name, job, age, languages = []) {
-        this.name = name;
-        this.job = job;
-        this.age = age;
-        this.languages = languages;
-        this.busy = true;
-    }
-    fetchJob = function() {
-        console.log(`${this.name} is a ${this.job}`);
-    }
-    exercise = function() {
-        console.log(`${this.name} thinks cycling is fun`);
-    }
-    exrcise = function() {
-      console.log(`${this.name} thinks cycling is fun`);
-    }
-    // Step 5.
-    completeTask(){
-      this.busy = false;
-  }
-  acceptNewTask(){
+  constructor(name, job, age, languages = []) {
+      this.name = name;
+      this.job = job;
+      this.age = age;
+      this.languages = languages;
       this.busy = true;
   }
-  //Step 6.
-  offerNewTask(){
-    if (this.busy) {
-        console.log(`I can't accept new tasks right now.`);
-    } else{
-        console.log(`I would love to take on a new task.`)
-    }
+  fetchJob = function() {
+      console.log(`${this.name} is a ${this.job}`);
   }
-  // STEP 7.
-  learnLanguage(language) {
-    this.languages.push(language);
+  exercise = function() {
+      console.log(`${this.name} thinks cycling is fun`);
   }
-  
-  listLanguages() {
-    console.log(this.languages);
+  exrcise = function() {
+    console.log(`${this.name} thinks cycling is fun`);
   }
+  // Step 5.
+  completeTask(){
+    this.busy = false;
+}
+acceptNewTask(){
+    this.busy = true;
+}
+//Step 6.
+offerNewTask(){
+  if (this.busy) {
+      console.log(`I can't accept new tasks right now.`);
+  } else{
+      console.log(`I would love to take on a new task.`)
   }
-  let programmer1 = new Person ('Chris', 'dancer', 23, ['HTML', 'CSS'] )
-  programmer1.exrcise ();
-  programmer1.exercise();
-  programmer1.fetchJob();
-  programmer1.acceptNewTask(); // BUSY
-  programmer1.offerNewTask();
-  programmer1.completeTask(); // NOT BUSY
-  programmer1.offerNewTask();
-  programmer1.listLanguages(); // --> [ ‘HTML’, ‘CSS’, ‘JavaScript’ ]
-  programmer1.learnLanguage("React"); // JUST LEARNED NEW LANG
-  programmer1.listLanguages();
-  
+}
+// STEP 7.
+learnLanguage(language) {
+  this.languages.push(language);
+}
+
+listLanguages() {
+  console.log(this.languages);
+}
+}
+let programmer1 = new Person ('Chris', 'dancer', 23, ['HTML', 'CSS'] )
+programmer1.exrcise ();
+programmer1.exercise();
+programmer1.fetchJob();
+programmer1.acceptNewTask(); // BUSY
+programmer1.offerNewTask();
+programmer1.completeTask(); // NOT BUSY
+programmer1.offerNewTask();
+programmer1.listLanguages(); // --> [ ‘HTML’, ‘CSS’, ‘JavaScript’ ]
+programmer1.learnLanguage("React"); // JUST LEARNED NEW LANG
+programmer1.listLanguages();
